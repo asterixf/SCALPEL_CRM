@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_040845) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_042032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_040845) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "email"
     t.string "address"
     t.datetime "created_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_040845) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "product_name"
+    t.string "name"
     t.string "description"
     t.integer "price"
     t.datetime "created_at", null: false
