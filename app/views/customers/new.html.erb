@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+  <h1 class= "my-3">New Customer</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="col-6">
+    <%= simple_form_for @customer do |f| %>
+      <%= f.input :name, required: true %>
+      <%= f.input :phone_number, required: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :address, required: true %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>
