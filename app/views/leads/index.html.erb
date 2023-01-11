@@ -6,12 +6,9 @@
     <ul class="list-group">
       <% @leads.each do |lead| %>
         <li class="list-group-item">
-          <%= lead.customer.name %>
+          <p><%= lead.customer.name%> Lead <%= lead.id %></p>
         </li>
       <% end %>
     </ul>
-  </div>
-  <div class="mt-2">
-    <%= link_to "New Lead", new_lead_path, class: "btn btn-flat" %>
   </div>
 </div>

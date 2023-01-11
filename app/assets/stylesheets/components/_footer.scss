@@ -7,6 +7,8 @@
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   width: 100%;
+  position: absolute;
+  bottom: -200px;;
 }
 .footer-links {
   display: flex;
@@ -16,7 +18,7 @@
   color: black;
   opacity: 0.15;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 15px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
