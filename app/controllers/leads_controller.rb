@@ -4,6 +4,10 @@ class LeadsController < ApplicationController
     @leads = current_user.leads
   end
 
+  def show
+    @lead = Lead.find(params[:id])
+  end
+
   def new
     @lead = Lead.new
   end

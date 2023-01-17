@@ -1,11 +1,17 @@
-<div class="container">
+<div class="container col-8">
   <h1 class="my-2">Customers List</h1> <%= link_to "New Customer", new_customer_path(@customer), class: "btn btn-flat mb-2" %>
     <ul class="list-group">
       <% @customers.each do |customer| %>
-        <li class="list-group-item">
-          <%= customer.name %> | <%= customer.phone_number %>
-          | <%= customer.email %> | <%= customer.address %>
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <%= customer.name %> | <%= customer.phone_number %>
+            | <%= customer.email %> | <%= customer.address %>
+          </div>
+          <div>
+            <%= link_to "New Lead", new_customer_lead_path(customer), class: "btn btn-flat-small" %>
+          </div>
         </li>
       <% end %>
     </ul>
 </div>
+<ul>

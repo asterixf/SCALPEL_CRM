@@ -6,9 +6,13 @@
     <ul class="list-group">
       <% @leads.each do |lead| %>
         <li class="list-group-item">
-          <p><%= lead.customer.name%> Lead <%= lead.id %></p>
+            <p>ID (<%= lead.id %>) - <%= lead.customer.name%> <span class= "status-tag"><%= lead.status %></span></p>
+            <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
+            <p>Orders: <%= lead.orders.count %></p>
+            <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
         </li>
       <% end %>
     </ul>
   </div>
+  <h5 class="my-2">Create New lead from <%= link_to "CUSTOMER PAGE", customers_path %></h4>
 </div>
