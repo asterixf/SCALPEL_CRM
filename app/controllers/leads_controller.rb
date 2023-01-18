@@ -30,7 +30,7 @@ class LeadsController < ApplicationController
   end
 
   def lead_params
-    params.require(:lead).permit(:status, :comments)
+    params.require(:lead).permit(:status, :follow_up_date, :comments)
   end
 
 end

@@ -4,6 +4,7 @@
   <p><%= @customer.address %></p>
   <%= simple_form_for [@customer, @lead] do |f| %>
   <%= f.input :status, collection: [ "New", "In process", "Won", "Lost" ] %>
+  <%= f.input :follow_up_date %>
   <%= f.input :comments %>
   <%= f.button :submit, class: "btn btn-flat"  %>
   <% end %>
