@@ -48,7 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_044507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comments"
-    t.datetime "follow_up_date"
+    t.date "follow_up_date"
+    t.time "follow_up_time"
     t.index ["customer_id"], name: "index_leads_on_customer_id"
     t.index ["user_id"], name: "index_leads_on_user_id"
   end
