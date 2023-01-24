@@ -1,40 +1,37 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row m-3">
     <div class="col-3 nav-bar-dashboard">
-      <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
-        <div class="card-body">
-          <i class="fa-solid fa-users"></i>
-          <h5 class="card-title">Customers</h5>
+      <%= link_to customers_path do %>
+        <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
+          <div class="card-body">
+            <i class="fa-solid fa-users"></i>
+            <h5 class="card-title">Customers</h5>
+          </div>
+        <% end %>
         </div>
-      </div>
-      <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
-        <div class="card-body">
-          <i class="fa-sharp fa-solid fa-file-invoice"></i>
-          <h5 class="card-title">Orders</h5>
+      <%= link_to customers_path do %>
+        <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
+          <div class="card-body">
+            <i class="fa-sharp fa-solid fa-file-invoice"></i>
+            <h5 class="card-title">Orders</h5>
+          </div>
         </div>
-      </div>
-      <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
-        <div class="card-body">
-          <i class="fa-solid fa-tag"></i>
-          <h5 class="card-title">Products</h5>
+      <% end %>
+      <%= link_to customers_path do %>
+        <div class="card text-bg-primary mb-3 text-center" style="max-width: 18rem;">
+          <div class="card-body">
+            <i class="fa-solid fa-tag"></i>
+            <h5 class="card-title">Products</h5>
+          </div>
         </div>
-      </div>
-      <%# <ul class="list-group my-5">
-        <li class="list-group-item text-center side-menu-item" title="Customers">
-        <i class="fa-solid fa-users">
-        </i>
-        <li class="list-group-item text-center side-menu-item" title="Orders">
-        <i class="fa-sharp fa-solid fa-file-invoice"></i>
-        <li class="list-group-item text-center side-menu-item" title="Orders">
-        <i class="fa-solid fa-tag"></i>
-        </li>
-      </ul> %>
+      <% end %>
     </div>
-    <div class="col-9 ">
+    <div class="col-9">
       <ul class="list-group">
         <% @leads.each do |lead| %>
           <li class="list-group-item">
-              <p>ID (<%= lead.id %>) - <%= lead.customer.name%> <span class= "status-tag"><%= lead.status %></span></p>
+              <p>ID (<%= lead.id %>) - <%= lead.customer.name%>
+              <span class= "status-tag"><%= lead.status %></span></p>
               <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
               <p>Orders: <%= lead.orders.count %></p>
               <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
