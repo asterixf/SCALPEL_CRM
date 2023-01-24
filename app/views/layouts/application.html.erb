@@ -11,16 +11,10 @@
     <%= favicon_link_tag 'favicon_scalpel.ico' %>
   </head>
 
-  <body>
-  <div class="flex-wrapper">
-    <div>
-      <%= render "shared/navbar" %>
-      <%= render "shared/flashes" %>
-        <%= yield %>
-    </div>
-    <div class="footer">
-      <%= render "shared/footer" %>
-    </div>
-  </div>
+<body>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+      <%= yield %>
+    <%= render "shared/footer" %>
 </body>
 </html>
