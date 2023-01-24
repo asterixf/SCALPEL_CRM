@@ -1,5 +1,6 @@
 class LeadsController < ApplicationController
   before_action :set_customer, only:[:new, :create]
+
   def index
     @leads = current_user.leads
   end
@@ -30,7 +31,6 @@ class LeadsController < ApplicationController
   end
 
   def lead_params
-    params.require(:lead).permit(:status, :follow_up_date, :comments)
+    params.require(:lead).permit(:status, :follow_up_date, :comments, :follow_up_date, :follow_up_time)
   end
-
 end

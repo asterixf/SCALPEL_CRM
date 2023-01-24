@@ -1,9 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to leads_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-gauge-high"></i>
+      <i class="fa-solid fa-gauge-high" style="color:white"></i>
       <% if user_signed_in? %>
-        <%= current_user.name %>
+        <span style="color:white" ><%= current_user.name%></span>
       <% end %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
