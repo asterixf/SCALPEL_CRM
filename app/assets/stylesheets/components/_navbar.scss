@@ -5,6 +5,7 @@
   color: white;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -21,8 +22,9 @@
   top: 0;
 }
 
-.side-menu-item {
-  font-size:xx-large;
+.nav-bar-dashboard a:link {
+  text-decoration: none !important;
+  color: white;
 }
 
 .side-menu-item {

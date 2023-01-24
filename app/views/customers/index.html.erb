@@ -1,4 +1,4 @@
-<div class="container col-8">
+<div class="container col-8 main-container">
   <h1 class="my-2">Customers List</h1> <%= link_to "New Customer", new_customer_path(@customer), class: "btn btn-flat mb-2" %>
     <ul class="list-group">
       <% @customers.each do |customer| %>
@@ -14,4 +14,3 @@
       <% end %>
     </ul>
 </div>
-<ul>

@@ -7,8 +7,6 @@
   padding: 0px 50px;
   color: white;
   width: 100%;
-  position:sticky;
-  bottom: 0;
 }
 .footer-links {
   display: flex;
@@ -26,11 +24,4 @@
 }
 .footer .fa-heart {
   color: #D23333;
-}
-
-.flex-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
 }
