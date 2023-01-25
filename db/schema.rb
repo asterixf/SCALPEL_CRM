@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_044507) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_040014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_044507) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["product_id"], name: "index_items_on_product_id"
+  end
+
+  create_table "lead_notes", force: :cascade do |t|
+    t.bigint "lead_id", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lead_id"], name: "index_lead_notes_on_lead_id"
   end
 
   create_table "leads", force: :cascade do |t|
@@ -89,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_044507) do
   add_foreign_key "complaints", "leads"
   add_foreign_key "items", "orders"
   add_foreign_key "items", "products"
+  add_foreign_key "lead_notes", "leads"
   add_foreign_key "leads", "customers"
   add_foreign_key "leads", "users"
   add_foreign_key "orders", "leads"

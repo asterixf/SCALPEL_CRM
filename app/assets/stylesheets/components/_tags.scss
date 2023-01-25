@@ -1,9 +1,26 @@
 .status-tag {
 font-weight: bolder;
-background-color: black;
+// background-color: black;
 color: white;
-font-size: large;
+font-size: smaller;
 padding: 6px;
+border-radius: 35%;
+}
+
+.new-tag {
+  background-color: #000000 ;
+}
+
+.going-tag {
+  background-color: #50C878 ;
+}
+
+.lost-tag {
+  background-color: #FF5733 ;
+}
+
+.won-tag {
+  background-color: #145cc9 ;
 }
 
 .time-stamp {

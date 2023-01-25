@@ -31,7 +31,16 @@
         <% @leads.each do |lead| %>
           <li class="list-group-item">
               <p>ID (<%= lead.id %>) - <%= lead.customer.name%>
-              <span class= "status-tag"><%= lead.status %></span></p>
+              <% if lead.status ==="New" %>
+                  <span class= "status-tag new-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Going"%>
+                  <span class= "status-tag going-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Lost"%>
+                  <span class= "status-tag lost-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Won"%>
+                  <span class= "status-tag won-tag"><%= lead.status %></span>
+              <% end %>
+              </p>
               <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
               <p>Orders: <%= lead.orders.count %></p>
               <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
