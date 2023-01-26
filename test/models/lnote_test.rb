@@ -1,6 +1,6 @@
 require "test_helper"
 
-class LeadNoteTest < ActiveSupport::TestCase
+class LnoteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

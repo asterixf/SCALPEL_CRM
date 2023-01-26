@@ -3,6 +3,6 @@ class Lead < ApplicationRecord
   belongs_to :customer
   has_many :orders
   has_many :complaints
-  has_many :lead_notes
+  has_many :lnotes
   validates :status, presence: true
 end
