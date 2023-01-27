@@ -1,27 +1,39 @@
 <div class="container main-container my-4">
-  <h1><%= @lead.customer.name %></h1>
-  <% if @lead.status === "New" %>
-        <p>Status: <span class= "status-tag new-tag"><%= @lead.status %></span></p>
-      <% elsif @lead.status === "Going"%>
-        <p>Status: <span class= "status-tag going-tag"><%= @lead.status %></span></p>
-      <% elsif @lead.status === "Lost"%>
-        <p>Status: <span class= "status-tag lost-tag"><%= @lead.status %></span></p>
-      <% elsif @lead.status === "Won"%>
-        <p>Status: <span class= "status-tag won-tag"><%= @lead.status %></span></p>
-    <% end %>
-  <p><%= @lead.customer.phone_number %></p>
-  <p><%= @lead.customer.email %> | <%= @lead.customer.address %></p>
-  <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%d %b %Y %H:%M:%S') %></p>
-  <div class="scroll-card-comments">
-    <p><%= @lead.comments %></p>
+  <div class="row">
+    <div class="col-4">
+      <h1><%= @lead.customer.name %></h1>
+      <% if @lead.status === "New" %>
+            <p>Status: <span class= "status-tag new-tag"><%= @lead.status %></span></p>
+          <% elsif @lead.status === "Going"%>
+            <p>Status: <span class= "status-tag going-tag"><%= @lead.status %></span></p>
+          <% elsif @lead.status === "Lost"%>
+            <p>Status: <span class= "status-tag lost-tag"><%= @lead.status %></span></p>
+          <% elsif @lead.status === "Won"%>
+            <p>Status: <span class= "status-tag won-tag"><%= @lead.status %></span></p>
+        <% end %>
+      <p><%= @lead.customer.phone_number %></p>
+      <p><%= @lead.customer.email %> | <%= @lead.customer.address %></p>
+      <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%d %b %Y %H:%M:%S') %></p>
+      <%= link_to "Edit", "#" , class: "btn btn-flat" %>
+    </div>
+    <div class="col-6">
+      <div class="scroll-card-comments">
+        <p><%= @lead.comments %></p>
+      </div>
+    </div>
   </div>
   <div class="mt-4">
-    <ul class="list-group">
-      <% @lead.lnotes.each do |lead_note| %>
+    <ul class="list-group mb-4">
+      <% @lead.lnotes.order(created_at: :desc).each do |lnote| %>
         <li class="list-group-item">
-        <%= lead_note.note %>
+        <%= lnote.note %>
         </li>
       <% end %>
     </ul>
+        <%= simple_form_for @lnote, url: lnotes_path do |f|  %>
+      <%= f.input :note  %>
+      <%= f.hidden_field :lead_id, value: @lead.id %>
+      <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
+    <% end %>
   </div>
 </div>

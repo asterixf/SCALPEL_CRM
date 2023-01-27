@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :set_customer, only:[:new, :create]
+  before_action :set_customer, only: [:new, :create]
 
   def index
     @leads = current_user.leads
@@ -7,6 +7,7 @@ class LeadsController < ApplicationController
 
   def show
     @lead = Lead.find(params[:id])
+    @lnote = Lnote.new
   end
 
   def new

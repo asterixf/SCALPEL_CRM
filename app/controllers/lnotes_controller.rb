@@ -6,17 +6,17 @@ class LnotesController < ApplicationController
 
   def create
     @lnote = Lnote.new(lnote_params)
-    @lnote.lead = @lead
     if @lnote.save
-      redirect_to leads_path
+      flash[:notice] = "Note was saved succesfuly"
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = @lnote.errors.full_messages.join
     end
+    redirect_to @lnote.lead
   end
 
   private
 
   def lnote_params
-    params.require(:lnotes).permit(:note)
+    params.require(:lnote).permit(:note, :lead_id)
   end
 end
