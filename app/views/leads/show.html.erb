@@ -14,7 +14,7 @@
       <p><%= @lead.customer.phone_number %></p>
       <p><%= @lead.customer.email %> | <%= @lead.customer.address %></p>
       <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%d %b %Y %H:%M:%S') %></p>
-      <%= link_to "Edit", "#" , class: "btn btn-flat" %>
+      <%= link_to "Edit", edit_lead_path(@lead) , class: "btn btn-flat" %>
     </div>
     <div class="col-6">
       <div class="scroll-card-comments">

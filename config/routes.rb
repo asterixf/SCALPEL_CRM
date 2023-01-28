@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :new, :create, :edit, :update] do
     resources :leads, only: [:new, :create]
   end
+  resources :customers, only: [:edit, :update]
 end

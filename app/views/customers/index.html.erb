@@ -6,7 +6,7 @@
           <div>
             <p><%= customer.name %> | <%= customer.phone_number %></p>
             <p><%= customer.email %> | <%= customer.address %></p>
-            <p class="text-align--end">
+            <p>
               <%= link_to "New Lead", new_customer_lead_path(customer), class: "btn btn-flat-small" %>
               <%= link_to "Edit Customer", edit_customer_path(customer), class: "btn btn-flat-small" %>
             </p>
