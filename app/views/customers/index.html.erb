@@ -1,14 +1,15 @@
 <div class="container col-8 main-container">
-  <h1 class="my-2">Customers List</h1> <%= link_to "New Customer", new_customer_path(@customer), class: "btn btn-flat mb-2" %>
+  <h1 class="my-2">Customers List</h1> <%= link_to "New Customer", new_customer_path(@customer), class: "btn btn-flat-small mb-2" %>
     <ul class="list-group">
       <% @customers.each do |customer| %>
         <li class="list-group-item d-flex justify-content-between">
           <div>
-            <%= customer.name %> | <%= customer.phone_number %>
-            | <%= customer.email %> | <%= customer.address %>
-          </div>
-          <div>
-            <%= link_to "New Lead", new_customer_lead_path(customer), class: "btn btn-flat-small" %>
+            <p><%= customer.name %> | <%= customer.phone_number %></p>
+            <p><%= customer.email %> | <%= customer.address %></p>
+            <p class="text-align--end">
+              <%= link_to "New Lead", new_customer_lead_path(customer), class: "btn btn-flat-small" %>
+              <%= link_to "Edit Customer", edit_customer_path(customer), class: "btn btn-flat-small" %>
+            </p>
           </div>
         </li>
       <% end %>
