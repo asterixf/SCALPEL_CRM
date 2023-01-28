@@ -16,6 +16,14 @@ class CustomersController < ApplicationController
     end
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+  end
+
   private
 
   def customer_params
