@@ -25,6 +25,16 @@ class LeadsController < ApplicationController
     end
   end
 
+  def edit
+    @lead = Lead.find(params[:id])
+  end
+
+  def update
+    @lead = Lead.find(params[:id])
+    @lead.update(lead_params)
+    redirect_to lead_path(@lead)
+  end
+
   private
 
   def set_customer

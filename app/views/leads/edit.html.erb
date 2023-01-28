@@ -1,0 +1,14 @@
+<div class="container main-container mt-5">
+  <h1><%= @lead.customer.name %></h1>
+  <h4><%= @lead.customer.phone_number %> | <%= @lead.customer.email %></h4>
+  <p><%= @lead.customer.address %></p>
+  <div class="col-6">
+    <%= simple_form_for @lead do |f| %>
+    <%= f.input :status, collection: [ "New", "Going", "Won", "Lost" ] %>
+    <%= f.input :follow_up_date %>
+    <%= f.input :follow_up_time %>
+    <%= f.input :comments %>
+    <%= f.button :submit, class: "btn btn-flat"  %>
+    <% end %>
+  </div>
+</div>
