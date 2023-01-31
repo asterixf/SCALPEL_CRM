@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :leads
+  has_many :lnotes
   validates :phone_number, :name, presence: true
   validates :email, :phone_number, uniqueness: true
 end

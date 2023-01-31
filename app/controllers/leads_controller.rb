@@ -2,11 +2,12 @@ class LeadsController < ApplicationController
   before_action :set_customer, only: [:new, :create]
 
   def index
-    @leads = current_user.leads
+    @leads = Lead.all
   end
 
   def show
     @lead = Lead.find(params[:id])
+    @lnotes = @lead.lnotes
     @lnote = Lnote.new
   end
 
