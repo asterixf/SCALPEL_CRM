@@ -1,6 +1,6 @@
 <div class="container main-container my-4">
   <div class="row">
-    <div class="col-4">
+    <div class="col-6">
       <h1><%= @lead.customer.name %></h1>
       <% if @lead.status === "New" %>
             <p>Status: <span class= "status-tag new-tag"><%= @lead.status %></span></p>
@@ -12,8 +12,9 @@
             <p>Status: <span class= "status-tag won-tag"><%= @lead.status %></span></p>
         <% end %>
       <p><%= @lead.customer.phone_number %></p>
-      <p><%= @lead.customer.email %> | <%= @lead.customer.address %></p>
-      <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%d %b %Y %H:%M:%S') %></p>
+      <p><%= @lead.customer.email %></p>
+      <p><%= @lead.customer.address %></p>
+      <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%b %d %Y %H:%M') %></p>
       <%= link_to "Edit", edit_lead_path(@lead) , class: "btn btn-flat" %>
     </div>
     <div class="col-6">
@@ -24,15 +25,20 @@
   </div>
   <div class="mt-4">
     <ul class="list-group mb-4">
-      <% @lead.lnotes.order(created_at: :desc).each do |lnote| %>
+      <% @lnotes.order(created_at: :desc).each do |lnote| %>
         <li class="list-group-item">
-        <%= lnote.note %>
+        <h5 class="time-stamp">
+        <%= lnote.created_at.localtime.strftime('%b %d %Y %H:%M') %>
+        <%= lnote.user.name %>
+        </h5>
+        <p><%= lnote.note %></p>
         </li>
       <% end %>
     </ul>
         <%= simple_form_for @lnote, url: lnotes_path do |f|  %>
       <%= f.input :note  %>
       <%= f.hidden_field :lead_id, value: @lead.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
     <% end %>
   </div>
