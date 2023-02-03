@@ -23,8 +23,14 @@
       </div>
     </div>
   </div>
-  <div class="mt-4">
-    <ul class="list-group mb-4" data-controller="lnotes">
+    <div class="my-4">
+   <%= simple_form_for @lnote, url: lnotes_path do |f|  %>
+      <%= f.input :note  %>
+      <%= f.hidden_field :lead_id, value: @lead.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
+    <% end %>
+    <ul class="list-group mt-4" data-controller="lnotes">
       <% @lnotes.order(created_at: :desc).each do |lnote| %>
         <li class="list-group-item">
         <h5 class="time-stamp">
@@ -35,11 +41,5 @@
         </li>
       <% end %>
     </ul>
-        <%= simple_form_for @lnote, url: lnotes_path do |f|  %>
-      <%= f.input :note  %>
-      <%= f.hidden_field :lead_id, value: @lead.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
-    <% end %>
   </div>
 </div>

@@ -5,7 +5,7 @@
   <div class="col-6">
     <%= simple_form_for [@customer, @lead] do |f| %>
     <%= f.input :status, collection: [ "New", "Going", "Won", "Lost" ] %>
-    <%= f.input :follow_up_date %>
+    <%= f.input :follow_up_date, html5: true %>
     <%= f.input :follow_up_time %>
     <%= f.input :comments %>
     <%= f.button :submit, class: "btn btn-flat"  %>
