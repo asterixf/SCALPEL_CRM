@@ -1,0 +1,61 @@
+<div class="container mb-3  ">
+  <div class="main-container">
+    <div class="my-3">
+      <%= link_to customers_path, class:"btn btn-flat-small" do %>
+        <i class="fa-solid fa-users"></i> Customers
+      <% end %>
+      <%= link_to customers_path, class:"btn btn-flat-small" do %>
+        <i class="fa-sharp fa-solid fa-file-invoice"></i> Orders
+      <% end %>
+      <%= link_to customers_path, class:"btn btn-flat-small" do %>
+        <i class="fa-solid fa-tag"></i> Producst
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <ul class="list-group">
+          <% @newleads.each do |lead| %>
+            <li class="list-group-item">
+                <p><%= lead.customer.name%>
+                  <% if lead.status ==="New" %>
+                      <span class= "status-tag new-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Going"%>
+                      <span class= "status-tag going-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Lost"%>
+                      <span class= "status-tag lost-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Won"%>
+                      <span class= "status-tag won-tag"><%= lead.status %></span>
+                  <% end %>
+                </p>
+                <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
+                <p>Orders: <%= lead.orders.count %></p>
+                <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <div class="col-6">
+        <ul class="list-group">
+          <% @goingleads.each do |lead| %>
+            <li class="list-group-item">
+                <p><%= lead.customer.name%>
+                  <% if lead.status ==="New" %>
+                      <span class= "status-tag new-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Going"%>
+                      <span class= "status-tag going-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Lost"%>
+                      <span class= "status-tag lost-tag"><%= lead.status %></span>
+                    <% elsif lead.status ==="Won"%>
+                      <span class= "status-tag won-tag"><%= lead.status %></span>
+                  <% end %>
+                </p>
+                <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
+                <p>Orders: <%= lead.orders.count %></p>
+                <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
