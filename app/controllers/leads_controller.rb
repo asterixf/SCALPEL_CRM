@@ -1,8 +1,9 @@
 class LeadsController < ApplicationController
   before_action :set_customer, only: [:new, :create]
 
-  def index
-    @leads = Lead.all
+  def dashboard
+    @newleads = current_user.leads.where(status: "New")
+    @goingleads = current_user.leads.where(status: "Going")
   end
 
   def show
