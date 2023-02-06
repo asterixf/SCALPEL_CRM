@@ -10,6 +10,7 @@ class LeadsController < ApplicationController
     @lead = Lead.find(params[:id])
     @lnotes = @lead.lnotes
     @lnote = Lnote.new
+    @order = Order.new
   end
 
   def new
