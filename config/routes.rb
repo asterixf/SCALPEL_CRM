@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :leads, only: [:new, :create]
   end
   resources :customers, only: [:edit, :update]
+  resources :orders, only: [:show]
   get 'dashboard', to: 'leads#dashboard'
 end
