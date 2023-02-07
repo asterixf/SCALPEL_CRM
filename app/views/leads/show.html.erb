@@ -19,10 +19,13 @@
       <p><%= @lead.customer.address %></p>
       <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%b %d %Y %H:%M') %></p>
       <%= link_to "Edit", edit_lead_path(@lead) , class: "btn btn-flat" %>
-      <%= simple_form_for [@lead, @order] do |f| %>
-      <%= f.input :status, collection: [ "New", "In-Process", "completed" ] %>
-      <%= f.button :submit, class: "btn btn-flat" %>
-    <% end %>
+      <div class= "my-3">
+        <%= simple_form_for [@lead, @order] do |f| %>
+          <%= f.hidden_field :lead_id, value: @lead.id %>
+          <%= f.hidden_field :status, value: "New" %>
+          <%= f.button :submit, class: "btn btn-flat" %>
+        <% end %>
+      </div>
     </div>
     <div class="col-6">
       <div class="scroll-card-comments">

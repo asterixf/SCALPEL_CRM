@@ -6,10 +6,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
-    @order.lead = @lead
-    @order.status = "New"
+    @order = Order.new(lead: @lead, status: "New")
+    @order.save
+    redirect_to order_path(@order)
+  end
 
+  def show
+    @order = Order.find(params[:id])
   end
 
   private
