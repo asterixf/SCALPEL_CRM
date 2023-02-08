@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
   resources :customers, only: [:edit, :update]
   resources :orders, only: [:show]
-  get 'dashboard', to: 'leads#dashboard'
+  get 'dashboard', to: 'pages#dashboard'
 end

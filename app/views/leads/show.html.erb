@@ -19,6 +19,15 @@
       <p><%= @lead.customer.address %></p>
       <p class="time-stamp">created-<%= @lead.created_at.localtime.strftime('%b %d %Y %H:%M') %></p>
       <%= link_to "Edit", edit_lead_path(@lead) , class: "btn btn-flat" %>
+      <% if @lead_orders.empty? %>
+          <p class= "my-3">No orders created</p>
+      <% else %>
+        <p class= "my-3">
+          <% @lead_orders.each do |order| %>
+              <%= link_to "Order_#{order.id}_#{order.status} |", order_path(order) %>
+          <% end %>
+        </p>
+      <% end %>
       <div class= "my-3">
         <%= simple_form_for [@lead, @order] do |f| %>
           <%= f.hidden_field :lead_id, value: @lead.id %>
