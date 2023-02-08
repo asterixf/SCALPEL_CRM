@@ -1,14 +1,10 @@
 class LeadsController < ApplicationController
   before_action :set_customer, only: [:new, :create]
 
-  def dashboard
-    @newleads = current_user.leads.where(status: "New")
-    @goingleads = current_user.leads.where(status: "Going")
-  end
-
   def show
     @lead = Lead.find(params[:id])
     @lnotes = @lead.lnotes
+    @lead_orders = @lead.orders
     @lnote = Lnote.new
     @order = Order.new
   end
@@ -22,7 +18,7 @@ class LeadsController < ApplicationController
     @lead.user = current_user
     @lead.customer = @customer
     if @lead.save
-      redirect_to leads_path
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
