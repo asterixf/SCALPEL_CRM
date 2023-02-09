@@ -1,5 +1,31 @@
 <div class="container mt-3">
   <div class="main-container">
     <h1><%= "Order_ID_#{@order.id}" %></h1>
+          <% if @order.status === "New" %>
+            <p>Status: <span class= "status-tag new-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Going"%>
+            <p>Status: <span class= "status-tag going-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Canceled"%>order
+            <p>Status: <span class= "status-tag lost-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Completed"%>
+            <p>Status: <span class= "status-tag won-tag"><%= @order.status %></span></p>
+        <% end %>
+    <div class="my-4">
+      <%= simple_form_for [@order, @onote] do |f|  %>
+        <%= f.input :note  %>
+        <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
+      <% end %>
+      <ul class="list-group mt-4">
+        <% @onotes.order(created_at: :desc).each do |onote| %>
+          <li class="list-group-item">
+          <h5 class="time-stamp">
+          <%= onote.created_at.localtime.strftime('%b %d %Y %H:%M') %>
+          <%= onote.user.name %>
+          </h5>
+          <p><%= onote.note %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
