@@ -43,10 +43,8 @@
     </div>
   </div>
     <div class="my-4">
-   <%= simple_form_for @lnote, url: lnotes_path do |f|  %>
+   <%= simple_form_for [@lead, @lnote], remote: true do |f|  %>
       <%= f.input :note  %>
-      <%= f.hidden_field :lead_id, value: @lead.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
     <% end %>
     <ul class="list-group mt-4" data-controller="lnotes">
