@@ -13,6 +13,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @onotes = @order.onotes
+    @onote = Onote.new
   end
 
   private

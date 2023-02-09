@@ -24,7 +24,7 @@ class LnotesController < ApplicationController
   end
 
   def lnote_params
-    params.require(:lnote).permit(:note, :lead_id, :user_id)
+    params.require(:lnote).permit(:note)
   end
 
 end

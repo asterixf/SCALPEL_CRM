@@ -24,14 +24,12 @@
       <% else %>
         <p class= "my-3">
           <% @lead_orders.each do |order| %>
-              <%= link_to "Order_#{order.id}_#{order.status} |", order_path(order) %>
+              <%= link_to "Order_ID#{order.id}_#{order.status} |", order_path(order) %>
           <% end %>
         </p>
       <% end %>
       <div class= "my-3">
         <%= simple_form_for [@lead, @order] do |f| %>
-          <%= f.hidden_field :lead_id, value: @lead.id %>
-          <%= f.hidden_field :status, value: "New" %>
           <%= f.button :submit, class: "btn btn-flat" %>
         <% end %>
       </div>
@@ -42,8 +40,8 @@
       </div>
     </div>
   </div>
-    <div class="my-4">
-   <%= simple_form_for [@lead, @lnote], remote: true do |f|  %>
+  <div class="my-4">
+    <%= simple_form_for [@lead, @lnote] do |f|  %>
       <%= f.input :note  %>
       <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
     <% end %>
