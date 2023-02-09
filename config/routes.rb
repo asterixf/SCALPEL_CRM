@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :leads, only: [:index, :show, :edit, :update] do
     resources :orders, only: [:new, :create]
+    resources :lnotes, only: [:new, :create]
   end
-  resources :lnotes, only: [:new, :create]
+  # resources :lnotes, only: [:new, :create]
   resources :customers, only: [:index, :new, :create, :edit, :update] do
     resources :leads, only: [:new, :create]
   end
