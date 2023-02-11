@@ -10,6 +10,9 @@
           <% elsif @order.status === "Completed"%>
             <p>Status: <span class= "status-tag won-tag"><%= @order.status %></span></p>
         <% end %>
+    <h2><%= @order.lead.customer.name %></h2>
+    <p><%= @order.lead.customer.phone_number %></p>
+    <p><%= @order.lead.customer.address %></p>
     <div class="my-4">
       <%= simple_form_for [@order, @onote] do |f|  %>
         <%= f.input :note  %>
