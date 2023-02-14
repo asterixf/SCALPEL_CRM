@@ -1,6 +1,14 @@
 class LeadsController < ApplicationController
   before_action :set_customer, only: [:new, :create]
 
+  def index
+    if params[:query].present?
+      @leads = Lead.global_search(params[:query])
+    else
+      @leads = Lead.all
+    end
+  end
+
   def show
     @lead = Lead.find(params[:id])
     @lnotes = @lead.lnotes

@@ -1,0 +1,32 @@
+<div class="main-container my-3">
+  <div class="container">
+    <h1>Leads</h1>
+    <%= form_with url: "#", method: :get, class: "d-flex col-6  mb-2" do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a lead" %>
+      <%= submit_tag "Search", class: "btn btn-flat-small" %>
+    <% end %>
+    <ul class="list-group">
+      <% @leads.each do |lead| %>
+        <li class="list-group-item">
+            <p><%= lead.customer.name%>
+              <% if lead.status ==="New" %>
+                  <span class= "status-tag new-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Going"%>
+                  <span class= "status-tag going-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Lost"%>
+                  <span class= "status-tag lost-tag"><%= lead.status %></span>
+                <% elsif lead.status ==="Won"%>
+                  <span class= "status-tag won-tag"><%= lead.status %></span>
+              <% end %>
+            </p>
+            <p><%= lead.customer.phone_number%> | <%= lead.customer.email %></p>
+            <p>Orders: <%= lead.orders.count %></p>
+            <%= link_to "Go", lead_path(lead), class: "btn btn-flat"%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
