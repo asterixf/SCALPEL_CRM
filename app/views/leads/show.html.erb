@@ -5,15 +5,7 @@
   <div class="row">
     <div class="col-6">
       <h1><%= @lead.customer.name %></h1>
-      <% if @lead.status === "New" %>
-            <p>Status: <span class= "status-tag new-tag"><%= @lead.status %></span></p>
-          <% elsif @lead.status === "Going"%>
-            <p>Status: <span class= "status-tag going-tag"><%= @lead.status %></span></p>
-          <% elsif @lead.status === "Lost"%>
-            <p>Status: <span class= "status-tag lost-tag"><%= @lead.status %></span></p>
-          <% elsif @lead.status === "Won"%>
-            <p>Status: <span class= "status-tag won-tag"><%= @lead.status %></span></p>
-        <% end %>
+          <%= render "shared/leadstatus" %>
       <p><%= @lead.customer.phone_number %></p>
       <p><%= @lead.customer.email %></p>
       <p><%= @lead.customer.address %></p>
