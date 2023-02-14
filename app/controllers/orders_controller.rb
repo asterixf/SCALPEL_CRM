@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @onotes = @order.onotes
     @onote = Onote.new
+    @lead = @order.lead
   end
 
   private

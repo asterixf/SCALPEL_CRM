@@ -1,15 +1,10 @@
 <div class="container mt-3">
   <div class="main-container">
+    <%=link_to lead_path(@lead) do%>
+      <i class="fa-sharp fa-solid fa-arrow-left me-3"></i>Back
+    <% end %>
     <h1><%= "Order_ID_#{@order.id}" %></h1>
-          <% if @order.status === "New" %>
-            <p>Status: <span class= "status-tag new-tag"><%= @order.status %></span></p>
-          <% elsif @order.status === "Going"%>
-            <p>Status: <span class= "status-tag going-tag"><%= @order.status %></span></p>
-          <% elsif @order.status === "Canceled"%>order
-            <p>Status: <span class= "status-tag lost-tag"><%= @order.status %></span></p>
-          <% elsif @order.status === "Completed"%>
-            <p>Status: <span class= "status-tag won-tag"><%= @order.status %></span></p>
-        <% end %>
+          <%= render "shared/orderstatus" %>
     <h2><%= @order.lead.customer.name %></h2>
     <p><%= @order.lead.customer.phone_number %></p>
     <p><%= @order.lead.customer.address %></p>

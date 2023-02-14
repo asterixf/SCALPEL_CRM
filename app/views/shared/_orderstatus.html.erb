@@ -1,0 +1,9 @@
+<% if @order.status === "New" %>
+            <p>Status: <span class= "status-tag new-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Going"%>
+            <p>Status: <span class= "status-tag going-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Canceled"%>order
+            <p>Status: <span class= "status-tag lost-tag"><%= @order.status %></span></p>
+          <% elsif @order.status === "Completed"%>
+            <p>Status: <span class= "status-tag won-tag"><%= @order.status %></span></p>
+<% end %>
