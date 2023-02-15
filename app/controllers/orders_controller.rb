@@ -23,5 +23,4 @@ class OrdersController < ApplicationController
   def set_lead
     @lead = Lead.find(params[:lead_id])
   end
-
 end

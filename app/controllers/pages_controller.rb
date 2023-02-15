@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   def dashboard
     @newleads = current_user.leads.where(status: "New")
     @goingleads = current_user.leads.where(status: "Going")
+    @wonleads = current_user.leads.where(status: "Won")
   end
-
 end
