@@ -8,6 +8,18 @@
     <h2><%= @order.lead.customer.name %></h2>
     <p><%= @order.lead.customer.phone_number %></p>
     <p><%= @order.lead.customer.address %></p>
+    <ul class="list-group">
+      <% @order.items.each do |item| %>
+        <li class="list-group-item">
+          <p>
+          Product: <%= item.product.name %>
+          <br>
+          Quanitity: <%= item.quantity %>
+          Sub Total $<%= item.price_total %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
     <div class="my-4">
       <%= simple_form_for [@order, @onote] do |f|  %>
         <%= f.input :note  %>

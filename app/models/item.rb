@@ -3,8 +3,8 @@ class Item < ApplicationRecord
   belongs_to :product
 
   def price_total
-    if self.product
-      product.price * self.quantity
+    if product
+      product.price * quantity
     else
       0.0
     end

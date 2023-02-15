@@ -26,5 +26,4 @@ class LnotesController < ApplicationController
   def lnote_params
     params.require(:lnote).permit(:note)
   end
-
 end

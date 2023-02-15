@@ -25,6 +25,7 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
     @lead.user = current_user
     @lead.customer = @customer
+    @lead.status = "New"
     if @lead.save
       redirect_to dashboard_path
     else
@@ -38,8 +39,11 @@ class LeadsController < ApplicationController
 
   def update
     @lead = Lead.find(params[:id])
-    @lead.update(lead_params)
-    redirect_to lead_path(@lead)
+    if @lead.update(lead_params)
+      redirect_to lead_path(@lead)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
