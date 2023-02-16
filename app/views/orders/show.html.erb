@@ -8,6 +8,12 @@
     <h2><%= @order.lead.customer.name %></h2>
     <p><%= @order.lead.customer.phone_number %></p>
     <p><%= @order.lead.customer.address %></p>
+    <div class="my-3">
+      <%= simple_form_for [@order, @item] do |f|%>
+        <%= f.association :product, label_method: :product_label  %>
+        <%= f.input :quantity %>
+      <% end %>
+    </div>
     <ul class="list-group">
       <% @order.items.each do |item| %>
         <li class="list-group-item">
@@ -22,7 +28,7 @@
     </ul>
     <div class="my-4">
       <%= simple_form_for [@order, @onote] do |f|  %>
-        <%= f.input :note  %>
+        <%= f.input :note %>
         <%= f.button :submit, value: "Add Note", class: "btn btn-flat" %>
       <% end %>
       <ul class="list-group mt-4">

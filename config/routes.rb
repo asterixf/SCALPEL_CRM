@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:edit, :update]
 
   resources :orders, only: [:show] do
+    resources :items, only: [:new, :create]
     resources :onotes, only: [:new, :create]
   end
 

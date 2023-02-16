@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @onotes = @order.onotes
+    @item = Item.new
     @onote = Onote.new
     @lead = @order.lead
   end
