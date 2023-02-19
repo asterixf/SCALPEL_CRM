@@ -19,10 +19,10 @@ class ItemsController < ApplicationController
   private
 
   def set_order
-    @order = Order.find(:order_id)
+    @order = Order.find(params[:order_id])
   end
 
   def item_params
-    params.require(@item).permit(:quantity, :product)
+    params.require(:item).permit(:quantity, :product_id)
   end
 end
