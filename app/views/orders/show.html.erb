@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <div class="main-container">
+  <div class="main-container col-6">
     <%=link_to lead_path(@lead) do%>
       <i class="fa-sharp fa-solid fa-arrow-left me-3"></i>Back
     <% end %>
@@ -9,12 +9,7 @@
     <p><%= @order.lead.customer.phone_number %></p>
     <p><%= @order.lead.customer.address %></p>
     <div class="my-3">
-      <%= simple_form_for [@order, @item] do |f|%>
-        <%= f.association :product, label_method: :product_label  %>
-        <%= f.input :quantity %>
-      <% end %>
-    </div>
-    <ul class="list-group">
+    <ul class="list-group my-3 ">
       <% @order.items.each do |item| %>
         <li class="list-group-item">
           <p>
@@ -26,6 +21,15 @@
         </li>
       <% end %>
     </ul>
+      <div class="border border-primary-subtle p-3">
+        <h3>Add Product</h3>
+        <%= simple_form_for [@order, @item] do |f|%>
+          <%= f.association :product, label_method: :product_label , value_method: :id %>
+          <%= f.input :quantity %>
+          <%= f.button :submit, value: "Add Product", class: "btn btn-flat" %>
+        <% end %>
+      </div>
+    </div>
     <div class="my-4">
       <%= simple_form_for [@order, @onote] do |f|  %>
         <%= f.input :note %>
