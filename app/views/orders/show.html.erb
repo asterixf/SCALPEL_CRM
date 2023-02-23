@@ -1,5 +1,5 @@
-<div class="container mt-3">
-  <div class="main-container col-6">
+<div class="container mt-3 d-flex justify-content-center">
+  <div class="main-container col-6 ">
     <%=link_to lead_path(@lead) do%>
       <i class="fa-sharp fa-solid fa-arrow-left me-3"></i>Back
     <% end %>
@@ -9,6 +9,7 @@
     <p><%= @order.lead.customer.phone_number %></p>
     <p><%= @order.lead.customer.address %></p>
     <div class="my-3">
+    <h3>Order Total: $<%= @order.order_total %></h3>
     <ul class="list-group my-3 ">
       <% @order.items.each do |item| %>
         <li class="list-group-item">
