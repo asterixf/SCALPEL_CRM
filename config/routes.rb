@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   end
   resources :customers, only: [:edit, :update]
 
-  resources :orders, only: [:show] do
+  resources :orders, only: [:show, :edit, :update] do
     resources :items, only: [:new, :create]
     resources :onotes, only: [:new, :create]
   end
+
+  resources :items, only: [:edit, :update, :destroy]
 
   get 'dashboard', to: 'pages#dashboard'
 end

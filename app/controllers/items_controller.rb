@@ -16,6 +16,26 @@ class ItemsController < ApplicationController
     redirect_to order_path(@order)
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    order = @item.order
+    @item.update(item_params)
+    redirect_to edit_order_path(order)
+    flash[:notice] = "#{@item.product.name} updated"
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    order = @item.order
+    @item.destroy
+    redirect_to edit_order_path(order)
+    flash[:notice] = "Item deleted"
+  end
+
   private
 
   def set_order
