@@ -1,0 +1,40 @@
+<div class="container mt-3 d-flex justify-content-center">
+  <div class="main-container col-6">
+    <%=link_to order_path(@order) do%>
+      <i class="fa-sharp fa-solid fa-arrow-left me-3"></i>Back
+    <% end %>
+    <h1><%= "Order_ID_#{@order.id}" %></h1>
+    <h2><%= @order.lead.customer.name %></h2>
+    <p><%= @order.lead.customer.phone_number %></p>
+    <p><%= @order.lead.customer.address %></p>
+    <div class="my-3">
+      <%= simple_form_for @order do |f| %>
+      <%= f.input :status, collection: [ "New", "Going", "Canceled", "Completed"] %>
+      <%= f.button :submit, value: "Update Status", class: "btn btn-flat-small" %>
+      <% end %>
+    </div>
+    <div class="my-3">
+      <h3>Order Total: $<%= @order.order_total %></h3>
+      <ul class="list-group my-3 ">
+        <% @order.items.each do |item| %>
+          <li class="list-group-item">
+            <p>
+            Product: <%= item.product.name %>
+            <br>
+            <%= simple_form_for item do |f| %>
+              <%= f.input :quantity %>
+              <%= f.button :submit, value: "Update Item", class: "btn btn-flat-small" %>
+              <%= link_to item_path(item),
+             data: {turbo_method: :delete, turbo_confirm: "Delete Item: #{item.product.name}?"}, class:"btn btn-flat-small" do %>
+                <i class="fa-solid fa-trash color" style= "font-size:10px;"></i>
+              <% end %>
+            <% end %>
+            <p class= "mt-2">Sub Total $<%= item.price_total %></p>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>

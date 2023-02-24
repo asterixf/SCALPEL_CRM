@@ -2,7 +2,8 @@ class Item < ApplicationRecord
   belongs_to :order
   belongs_to :product
   validates :product, presence: true
-  validates :quantity, presence: true
+  # validates :quantity, presence: true
+  validates :quantity, comparison: { greater_than: 0 }
   validate :existing_product_in_order
 
   def price_total
