@@ -1,12 +1,28 @@
-<div class=" container main-container mt-3 ">
-  <h1>products</h1>
-    <% @products.each do |product| %>
-      <div class="card-product my-2 col-10">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h2><%= product.name %></h2>
-          <p><%= product.description  %><strong>$<%=product.price %></strong></p>
-        </div>
-      </div>
+<div class=" container main-container mt-3 my-3">
+  <h1>Create new product</h1>
+  <div class="col-6 my-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+    <%= simple_form_for @product do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit, class:"btn-flat-small"%>
     <% end %>
+  </div>
+  <h2>products</h2>
+  <div class="cards">
+    <% @products.each do |product| %>
+        <div class="card-product product-card">
+          <% if product.photo.present? %>
+            <%= cl_image_tag product.photo.key %>
+          <% else %>
+            <img src= "" />
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= product.name %></h2>
+            <p><%= product.description  %><strong>$<%=product.price %></strong></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>
