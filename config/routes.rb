@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:edit, :update, :destroy]
+  resources :products, only: [:index]
 
   get 'dashboard', to: 'pages#dashboard'
 end
