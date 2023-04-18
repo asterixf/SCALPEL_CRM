@@ -282,6 +282,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  mail
   pg (~> 1.1)
   pg_search
   puma (~> 5.0)
